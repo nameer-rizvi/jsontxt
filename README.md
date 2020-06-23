@@ -1,6 +1,6 @@
 # jsontxt
 
-Write, read, & delete JSON stored in a .txt file located in a project's root folder.
+Write, read, & delete JSON stored in a .txt file located in a project's root directory.
 
 ## Installation
 
@@ -23,7 +23,7 @@ const data = [{ name: "" }, ""];
 
 jsontxt.write(data);
 
-// Writes JSON in a .txt file located in the projects root folder.
+// Writes JSON in a .txt file located in the projects root directory.
 ```
 
 Read data:
@@ -33,7 +33,7 @@ const data = jsontxt.read();
 
 console.log(data);
 
-// [{ name: "" }, ""]
+// [{ name: "" }, ""] or [], if file doesn't exist.
 ```
 
 Delete file:
@@ -46,7 +46,7 @@ jsontxt.delete();
 
 ## .txt Path
 
-By default, PWD is the environment variable used to find a project's root folder. If it is null or undefined, or if you'd like to save the .txt file in a different location, you can define an absolute path to host the file using the JSONTXT_PATH environment variable name.
+By default, PWD is the environment variable used to find a project's root directory. If it is null or undefined, or if you'd like to save the .txt file in a different location, you can define an absolute path to host the file using the JSONTXT_PATH environment variable name.
 
 ## .txt Name
 
