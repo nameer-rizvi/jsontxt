@@ -1,6 +1,6 @@
 # jsontxt
 
-Write, read, & delete JSON stored in a .txt file located in a project's root directory.
+Write, read, & delete JSON stored in a .txt file located in the project's root directory.
 
 ## Installation
 
@@ -16,24 +16,24 @@ Require module:
 const jsontxt = require("jsontxt");
 ```
 
-Write data:
+Write json:
 
 ```javascript
-const data = [{ name: "" }, ""];
+const json = [{ key: "value" }, "item"];
 
-jsontxt.write(data);
+jsontxt.write(json);
 
-// Writes JSON in a .txt file located in the projects root directory.
+// Writes JSON in a .txt file located in the project's root directory.
 ```
 
-Read data:
+Read json:
 
 ```javascript
-const data = jsontxt.read();
+const json = jsontxt.read();
 
-console.log(data);
+console.log(json);
 
-// [{ name: "" }, ""] or [], if file doesn't exist.
+// [{ key: "value" }, "item"] or [] as a fallback.
 ```
 
 Delete file:
@@ -50,4 +50,4 @@ By default, PWD is the environment variable used to find a project's root direct
 
 ## .txt Name
 
-By default, the name assigned to the .txt file is "db". If you'd like to save the .txt file under a different name, you can define it using the JSONTXT_NAME environment variable name.
+By default, the name assigned to the .txt file is "json". If you'd like to save the .txt file under a different name, you can define it using the JSONTXT_NAME environment variable name.
