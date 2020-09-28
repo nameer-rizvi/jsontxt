@@ -11,7 +11,11 @@ const name = process.env.JSONTXT_NAME || "json";
 
 const filepath = dir && dir + "/" + name + ".txt";
 
-const errorLog = (err) => console.error(new Error("[jsontxt] 🚫 " + err + "."));
+const logErrorHard = (err) =>
+  console.error(new Error("[jsontxt] 🚫 " + err + "."));
+
+const logErrorSoft = (err, err2) =>
+  console.log("[jsontxt] 🚫 " + err + (err2 || "."));
 
 exports.write = (json) => {
   try {
@@ -20,9 +24,9 @@ exports.write = (json) => {
     // json input is a legitimate json value...
     // hence the use of the try/catch block!
     JSON.parse(jsonStringified);
-    writeFileSync(filepath, jsonStringified, errorLog);
+    writeFileSync(filepath, jsonStringified, logErrorHard);
   } catch (err) {
-    errorLog(err);
+    logErrorHard(err);
   }
 };
 
@@ -30,16 +34,17 @@ exports.read = () => {
   let json;
   try {
     json = JSON.parse(readFileSync(filepath, "utf8"));
+    return json;
   } catch (err) {
-    errorLog(err);
+    logErrorSoft(err, ". Returning empty array as fallback.");
+    return [];
   }
-  return json || [];
 };
 
 exports.delete = () => {
   try {
     unlinkSync(filepath);
   } catch (err) {
-    errorLog(err);
+    logErrorSoft(err);
   }
 };
