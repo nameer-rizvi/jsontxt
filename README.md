@@ -1,6 +1,6 @@
 # jsontxt
 
-Write, read, & delete JSON stored in a .txt file located in the project's root directory.
+Write, read, & delete JSON stored in a .txt file.
 
 ## Installation
 
@@ -21,27 +21,27 @@ Write json:
 ```javascript
 const json = [{ key: "value" }, "item"];
 
-jsontxt.write(json);
+jsontxt.write(json, { filename: "test" });
 
-// Writes JSON in a .txt file located in the project's root directory.
+// Writes JSON in a test.txt file located in the project's root directory [default].
 ```
 
 Read json:
 
 ```javascript
-const json = jsontxt.read();
+const json = jsontxt.read({ filename: "test" });
 
 console.log(json);
 
-// [{ key: "value" }, "item"] or [] as a fallback.
+// [{ key: "value" }, "item"]
 ```
 
 Delete file:
 
 ```javascript
-jsontxt.delete();
+jsontxt.delete({ filename: "test" });
 
-// Removes .txt file.
+// Deletes test.txt file.
 ```
 
 ## .txt Path
