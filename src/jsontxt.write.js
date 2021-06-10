@@ -1,8 +1,9 @@
-const makeFilepath = require("./util.filepath");
-const { writeFileSync } = require("fs");
-
 function jsontxtWrite(json = [], options, callback) {
   try {
+    const { writeFileSync } = require("fs");
+
+    const makeFilepath = require("./util.filepath");
+
     const filepath = makeFilepath(options);
 
     const jsonStringified = JSON.stringify(json);

@@ -4,8 +4,8 @@ function getCWD() {
   return cwd;
 }
 
-function jsontxtUtilFilepath(options = {}) {
-  const { filepath: customFilepath, filename: customFilename } = options;
+function jsontxtUtilFilepath(options) {
+  const { filepath: customFilepath, filename: customFilename } = options || {};
 
   let directory =
     customFilepath ||

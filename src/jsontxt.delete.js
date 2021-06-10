@@ -1,8 +1,9 @@
-const makeFilepath = require("./util.filepath");
-const { unlinkSync } = require("fs");
-
 function jsontxtDelete(options, callback) {
   try {
+    const { unlinkSync } = require("fs");
+
+    const makeFilepath = require("./util.filepath");
+
     const filepath = makeFilepath(options);
 
     unlinkSync(filepath);

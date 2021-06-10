@@ -1,8 +1,9 @@
-const makeFilepath = require("./util.filepath");
-const { readFileSync } = require("fs");
-
 function jsontxtRead(options, callback) {
   try {
+    const { readFileSync } = require("fs");
+
+    const makeFilepath = require("./util.filepath");
+
     const filepath = makeFilepath(options);
 
     const jsontxt = readFileSync(filepath, "utf8");
