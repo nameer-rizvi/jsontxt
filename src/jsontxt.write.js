@@ -12,9 +12,13 @@ function jsontxtWrite(json = [], options, callback) {
 
     writeFileSync(filepath, jsonStringified);
 
-    if (callback) callback(null);
+    if (callback) callback(null, json);
+
+    return json;
   } catch (err) {
     if (callback) callback(err);
+
+    return;
   }
 }
 

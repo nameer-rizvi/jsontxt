@@ -4,8 +4,8 @@ function getCWD() {
   return cwd;
 }
 
-function jsontxtUtilFilepath(options) {
-  const { filepath: customFilepath, filename: customFilename } = options || {};
+function jsontxtUtilFilepath(options = {}) {
+  const { filepath: customFilepath, filename: customFilename } = options;
 
   let directory =
     customFilepath ||
@@ -19,7 +19,7 @@ function jsontxtUtilFilepath(options) {
   let filename = customFilename || process.env.JSONTXT_NAME || "json" || "";
 
   if (directory && !directory.endsWith(ext) && !directory.endsWith("/"))
-    directory = directory + "/";
+    directory += "/";
 
   if (!filename.endsWith(ext)) filename += ext;
 

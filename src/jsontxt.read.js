@@ -15,6 +15,8 @@ function jsontxtRead(options, callback) {
     return json;
   } catch (err) {
     if (callback) callback(err);
+
+    return;
   }
 }
 
