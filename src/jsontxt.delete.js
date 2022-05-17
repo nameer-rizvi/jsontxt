@@ -1,16 +1,16 @@
-function jsontxtDelete(options, callback) {
+function jsontxtDelete(option, callback) {
   try {
     const { unlinkSync } = require("fs");
 
     const makeFilepath = require("./util.filepath");
 
-    const filepath = makeFilepath(options);
+    const filepath = makeFilepath(option);
 
     unlinkSync(filepath);
 
     if (callback) callback(null);
-  } catch (err) {
-    if (callback) callback(err);
+  } catch (error) {
+    if (callback) callback(error);
   }
 }
 

@@ -1,24 +1,22 @@
-function jsontxtWrite(json = [], options, callback) {
+function jsontxtWrite(json = [], option, callback) {
   try {
     const { writeFileSync } = require("fs");
 
     const makeFilepath = require("./util.filepath");
 
-    const filepath = makeFilepath(options);
+    const filepath = makeFilepath(option);
 
-    const jsonStringified = JSON.stringify(json);
+    const stringified = JSON.stringify(json);
 
-    JSON.parse(jsonStringified); // Parse jsonStringified here to test if json input is a json value.
+    JSON.parse(stringified); // Parse json here to test if json input is valid.
 
-    writeFileSync(filepath, jsonStringified);
+    writeFileSync(filepath, stringified);
 
     if (callback) callback(null, json);
 
     return json;
   } catch (err) {
     if (callback) callback(err);
-
-    return;
   }
 }
 

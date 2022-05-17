@@ -1,10 +1,10 @@
-function jsontxtRead(options, callback) {
+function jsontxtRead(option, callback) {
   try {
     const { readFileSync } = require("fs");
 
     const makeFilepath = require("./util.filepath");
 
-    const filepath = makeFilepath(options);
+    const filepath = makeFilepath(option);
 
     const jsontxt = readFileSync(filepath, "utf8");
 
@@ -15,8 +15,6 @@ function jsontxtRead(options, callback) {
     return json;
   } catch (err) {
     if (callback) callback(err);
-
-    return;
   }
 }
 

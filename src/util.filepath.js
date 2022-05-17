@@ -1,31 +1,24 @@
-function getCWD() {
-  let cwd = process.cwd();
-  if (cwd.includes("/node_modules")) cwd = cwd.split("/node_modules")[0];
-  return cwd;
-}
+function makeFilepath(option) {
+  let { filepath, filename } = option || {};
 
-function jsontxtUtilFilepath(options = {}) {
-  const { filepath: customFilepath, filename: customFilename } = options;
-
-  let directory =
-    customFilepath ||
-    process.env.JSONTXT_PATH ||
-    process.env.PWD ||
-    getCWD() ||
-    "";
+  if (!filepath)
+    filepath =
+      process.env.JSONTXT_PATH ||
+      process.env.PWD ||
+      process.cwd?.()?.split("/node_modules")[0] ||
+      "";
 
   const ext = ".txt";
 
-  let filename = customFilename || process.env.JSONTXT_NAME || "json" || "";
+  if (filepath.endsWith(ext)) return filepath;
 
-  if (directory && !directory.endsWith(ext) && !directory.endsWith("/"))
-    directory += "/";
+  if (!filepath.endsWith("/")) filepath += "/";
+
+  if (!filename) filename = process.env.JSONTXT_NAME || "json" || "";
 
   if (!filename.endsWith(ext)) filename += ext;
 
-  const filepath = directory + filename;
-
-  return filepath;
+  return filepath + filename;
 }
 
-module.exports = jsontxtUtilFilepath;
+module.exports = makeFilepath;
