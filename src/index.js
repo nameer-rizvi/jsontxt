@@ -1,8 +1,10 @@
 const jsontxt = {
-  delete: require("./jsontxt.delete"),
-  filesize: require("./jsontxt.filesize"),
-  read: require("./jsontxt.read"),
-  write: require("./jsontxt.write"),
+  delete: require("./delete"),
+  filepath: require("./filepath"),
+  filesize: require("./filesize"),
+  fs: require("./fs"),
+  read: require("./read"),
+  write: require("./write"),
 };
 
 module.exports = jsontxt;

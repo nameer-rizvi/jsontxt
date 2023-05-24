@@ -1,5 +1,5 @@
-function makeFilepath(option) {
-  let { filepath, filename } = option || {};
+function filepath(option = {}) {
+  let { filepath, filename } = option;
 
   if (!filepath)
     filepath =
@@ -14,11 +14,14 @@ function makeFilepath(option) {
 
   if (!filepath.endsWith("/")) filepath += "/";
 
-  if (!filename) filename = process.env.JSONTXT_NAME || "json" || "";
+  if (!filename)
+    filename =
+      process.env.JSONTXT_NAME ||
+      ["json", process.env.NODE_ENV].filter(Boolean).join("_");
 
   if (!filename.endsWith(ext)) filename += ext;
 
   return filepath + filename;
 }
 
-module.exports = makeFilepath;
+module.exports = filepath;
