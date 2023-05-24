@@ -1,6 +1,6 @@
 {
   "name": "jsontxt",
-  "version": "0.0.9",
+  "version": "0.1.0",
   "description": "Write, read, & delete JSON stored in a .txt file located in a project's root directory.",
   "main": "src/index.js",
   "scripts": {
