@@ -1,17 +1,13 @@
 {
   "name": "jsontxt",
-  "version": "0.1.1",
-  "main": "src/index.js",
+  "version": "0.1.2",
   "description": "Write, read, & delete JSON stored in a .txt file located in a project's root directory.",
-  "author": "Nameer Rizvi (https://github.com/nameer-rizvi)",
-  "homepage": "https://github.com/nameer-rizvi/jsontxt#readme",
-  "bugs": "https://github.com/nameer-rizvi/jsontxt/issues",
+  "main": "src/index.js",
+  "scripts": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/nameer-rizvi/jsontxt.git"
   },
-  "scripts": {},
-  "license": "ISC",
   "keywords": [
     "json",
     "store",
@@ -20,5 +16,11 @@
     "file",
     "fs",
     "txt"
-  ]
+  ],
+  "author": "Nameer Rizvi (https://github.com/nameer-rizvi)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nameer-rizvi/jsontxt/issues"
+  },
+  "homepage": "https://github.com/nameer-rizvi/jsontxt#readme"
 }
