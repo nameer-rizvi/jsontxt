@@ -4,8 +4,8 @@ Write, read, & delete JSON stored in a .txt file.
 
 ## Installation
 
-```
-$ npm i jsontxt
+```console
+npm i jsontxt
 ```
 
 ## Usage

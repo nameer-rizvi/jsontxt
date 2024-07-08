@@ -1,9 +1,9 @@
-const fs = require("./fs");
+const fs = require("fs");
 const filepath = require("./filepath");
 
 function _delete(option) {
   try {
-    if (fs) fs.unlinkSync(filepath(option));
+    fs.unlinkSync(filepath(option));
   } catch {}
 }
 

@@ -1,14 +1,12 @@
-const fs = require("./fs");
+const fs = require("fs");
 const filepath = require("./filepath");
 
 function write(json = [], option) {
-  if (fs) {
-    const stringified = JSON.stringify(json);
+  const jsonstring = JSON.stringify(json);
 
-    JSON.parse(stringified); // Parse json here to test if json input is valid.
+  JSON.parse(jsonstring); // Validate json input.
 
-    fs.writeFileSync(filepath(option), stringified);
-  }
+  fs.writeFileSync(filepath(option), jsonstring);
 }
 
 module.exports = write;
