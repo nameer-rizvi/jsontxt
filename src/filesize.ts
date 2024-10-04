@@ -1,7 +1,20 @@
-const fs = require("fs");
-const filepath = require("./filepath");
+import { FilePathOptions, filepath } from "./filepath";
+import fs from "fs";
 
-function filesize(option) {
+interface FileSizeResult {
+  b: number;
+  kb: number;
+  mb: number;
+  gb: number;
+  tb: number;
+  bytes: string;
+  kilobytes: string;
+  megabytes: string;
+  gigabytes: string;
+  terabytes: string;
+}
+
+function filesize(option?: FilePathOptions): FileSizeResult | undefined {
   try {
     const stat = fs.statSync(filepath(option));
 
@@ -20,4 +33,4 @@ function filesize(option) {
   } catch {}
 }
 
-module.exports = filesize;
+export default filesize;
