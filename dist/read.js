@@ -7,8 +7,11 @@ const filepath_1 = require("./filepath");
 const fs_1 = __importDefault(require("fs"));
 function read(option) {
     try {
-        return JSON.parse(fs_1.default.readFileSync((0, filepath_1.filepath)(option), "utf8"));
+        const data = JSON.parse(fs_1.default.readFileSync((0, filepath_1.filepath)(option), "utf8"));
+        return { success: true, error: null, data };
     }
-    catch (_a) { }
+    catch (error) {
+        return { success: false, error: error, data: null };
+    }
 }
 exports.default = read;

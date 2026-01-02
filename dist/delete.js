@@ -8,7 +8,10 @@ const fs_1 = __importDefault(require("fs"));
 function _delete(option) {
     try {
         fs_1.default.unlinkSync((0, filepath_1.filepath)(option));
+        return { success: true, error: null };
     }
-    catch (_a) { }
+    catch (error) {
+        return { success: false, error: error };
+    }
 }
 exports.default = _delete;

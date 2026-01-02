@@ -3,24 +3,26 @@ export interface FilePathOptions {
   filename?: string;
 }
 
+const EXT = ".txt";
+
 export function filepath(option: FilePathOptions = {}): string {
   let { filepath = "", filename } = option;
 
-  const npmdir = process.cwd?.()?.split("/node_modules")[0];
+  const cwd = typeof process.cwd === "function" ? process.cwd() : "";
 
-  const ext = ".txt";
+  const npmDir = cwd.split("/node_modules")[0];
 
   if (!filepath) {
     if (process.env.JSONTXT_PATH) {
       filepath = process.env.JSONTXT_PATH;
     } else if (process.env.PWD) {
       filepath = process.env.PWD;
-    } else if (npmdir) {
-      filepath = npmdir;
+    } else if (npmDir) {
+      filepath = npmDir;
     }
   }
 
-  if (filepath.endsWith(ext)) return filepath;
+  if (filepath.endsWith(EXT)) return filepath;
 
   if (!filepath.endsWith("/")) filepath += "/";
 
@@ -32,7 +34,7 @@ export function filepath(option: FilePathOptions = {}): string {
     }
   }
 
-  if (!filename.endsWith(ext)) filename += ext;
+  if (!filename.endsWith(EXT)) filename += EXT;
 
-  return filepath + filename;
+  return `${filepath}${filename}`;
 }

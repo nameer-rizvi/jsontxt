@@ -1,11 +1,11 @@
 {
   "name": "jsontxt",
-  "version": "0.1.4",
-  "description": "Write, read, & delete JSON stored in a .txt file located in a project's root directory.",
+  "version": "0.1.5",
+  "description": "Write, read, & delete JSON stored in a .txt file.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "build": "tsc",
+    "build": "npx rimraf dist && tsc",
     "test-cjs": "yarn build && node test/test-cjs.js",
     "test-esm": "yarn build && node test/test-esm.mjs"
   },
@@ -29,8 +29,8 @@
   },
   "homepage": "https://github.com/nameer-rizvi/jsontxt#readme",
   "devDependencies": {
-    "@types/node": "^22.7.4",
+    "@types/node": "^25.0.3",
     "ts-node": "^10.9.2",
-    "typescript": "^5.6.2"
+    "typescript": "^5.9.3"
   }
 }

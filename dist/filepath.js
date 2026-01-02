@@ -1,11 +1,11 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.filepath = filepath;
+const EXT = ".txt";
 function filepath(option = {}) {
-    var _a, _b;
     let { filepath = "", filename } = option;
-    const npmdir = (_b = (_a = process.cwd) === null || _a === void 0 ? void 0 : _a.call(process)) === null || _b === void 0 ? void 0 : _b.split("/node_modules")[0];
-    const ext = ".txt";
+    const cwd = typeof process.cwd === "function" ? process.cwd() : "";
+    const npmDir = cwd.split("/node_modules")[0];
     if (!filepath) {
         if (process.env.JSONTXT_PATH) {
             filepath = process.env.JSONTXT_PATH;
@@ -13,11 +13,11 @@ function filepath(option = {}) {
         else if (process.env.PWD) {
             filepath = process.env.PWD;
         }
-        else if (npmdir) {
-            filepath = npmdir;
+        else if (npmDir) {
+            filepath = npmDir;
         }
     }
-    if (filepath.endsWith(ext))
+    if (filepath.endsWith(EXT))
         return filepath;
     if (!filepath.endsWith("/"))
         filepath += "/";
@@ -29,7 +29,7 @@ function filepath(option = {}) {
             filename = ["json", process.env.NODE_ENV].filter(Boolean).join("_");
         }
     }
-    if (!filename.endsWith(ext))
-        filename += ext;
-    return filepath + filename;
+    if (!filename.endsWith(EXT))
+        filename += EXT;
+    return `${filepath}${filename}`;
 }
