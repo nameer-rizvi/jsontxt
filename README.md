@@ -1,63 +1,77 @@
-# @nameer/typescript-package
+# jsontxt
 
-Template for developing NPM packages written in TypeScript with support for CommonJS and ES Modules.
+Read, write, and delete JSON stored in a `.txt` file.
 
-## For Package Consumers
-
-If you're using this as a published package, install it via:
+## Installation
 
 ```bash
-npm install @nameer/typescript-package
+npm install jsontxt
 # or
-yarn add @nameer/typescript-package
+yarn add jsontxt
 ```
 
-### Usage
+## Usage
 
-This package supports both CommonJS and ES Modules out of the box.
-
-**ESM**
-
-```js
-import * as pkg from "@nameer/typescript-package";
+```javascript
+const jsontxt = require("jsontxt"); // commonjs
+// or
+import jsontxt from "jsontxt"; // esm
 ```
 
-**CommonJS**
+### Write
 
-```js
-const pkg = require("@nameer/typescript-package");
+```javascript
+jsontxt.write([{ key: "value" }, "item"], { filename: "test" });
+// { success: true, error: null }
 ```
 
-## For Template Users
+### Read
 
-If you're using this as a starting point for your own package, clone and set it up:
-
-```bash
-# Clone project
-git clone https://github.com/nameer-rizvi/typescript-package.git
-
-# Change into project
-cd typescript-package
-
-# Install dependencies
-yarn install
+```javascript
+jsontxt.read({ filename: "test" });
+// { success: true, error: null, data: [{ key: "value" }, "item"] }
 ```
 
-### Development
+### Delete
 
-```bash
-# Build CJS and ESM outputs
-yarn build
-
-# Lint source files
-yarn lint
-
-# Auto-fix lint errors
-yarn lint:fix
-
-# Test both CJS and ESM outputs
-yarn test
+```javascript
+jsontxt.delete({ filename: "test" });
+// { success: true, error: null }
 ```
+
+### File Size
+
+```javascript
+jsontxt.filesize({ filename: "test" });
+// { b: 1500, kb: 1.5, mb: 0.0015, ..., bytes: "1,500 bytes", kilobytes: "1.5kb", ... }
+```
+
+## File Path
+
+The `.txt` file is resolved in the following order:
+
+1. `option.filepath` passed directly to the function
+2. `JSONTXT_PATH` environment variable
+3. `PWD` environment variable
+4. `process.cwd()`
+
+## File Name
+
+The `.txt` filename is resolved in the following order:
+
+1. `option.filename` passed directly to the function
+2. `JSONTXT_NAME` environment variable
+3. `json_<NODE_ENV>.txt` (e.g. `json_development.txt`)
+4. `json.txt`
+
+## Options
+
+All functions accept an optional `FilePathOptions` object:
+
+| Option     | Type     | Description                                 |
+| ---------- | -------- | ------------------------------------------- |
+| `filepath` | `string` | Absolute path to the directory or file      |
+| `filename` | `string` | Name of the `.txt` file (without extension) |
 
 ## License
 
