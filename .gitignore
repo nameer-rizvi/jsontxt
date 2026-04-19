@@ -19,8 +19,8 @@ node_modules
 # build output
 dist/
 
+# macOS system files
+.DS_Store
+
 # test files
 *.txt
-
-# files
-.DS_Store
