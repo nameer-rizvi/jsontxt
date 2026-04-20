@@ -1,7 +1,7 @@
 {
   "name": "jsontxt",
   "packageManager": "yarn@4.13.0",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "Read, write, and delete JSON stored in a `.txt` file.",
   "author": "Nameer Rizvi (https://github.com/nameer-rizvi)",
   "license": "MIT",
@@ -24,18 +24,18 @@
     "dist",
     "README.md"
   ],
-  "main": "dist/cjs/index.js",
-  "module": "dist/esm/index.js",
-  "types": "dist/cjs/types/index.d.ts",
+  "main": "./dist/cjs/index.js",
+  "module": "./dist/esm/index.js",
+  "types": "./dist/cjs/types/index.d.ts",
   "exports": {
     ".": {
       "import": {
-        "types": "dist/esm/types/index.d.ts",
-        "default": "dist/esm/index.js"
+        "types": "./dist/esm/types/index.d.ts",
+        "default": "./dist/esm/index.js"
       },
       "require": {
-        "types": "dist/cjs/types/index.d.ts",
-        "default": "dist/cjs/index.js"
+        "types": "./dist/cjs/types/index.d.ts",
+        "default": "./dist/cjs/index.js"
       }
     }
   },
