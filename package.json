@@ -1,7 +1,7 @@
 {
   "name": "jsontxt",
   "packageManager": "yarn@4.13.0",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "description": "Read, write, and delete JSON stored in a `.txt` file.",
   "author": "Nameer Rizvi (https://github.com/nameer-rizvi)",
   "license": "MIT",
